@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">邮箱：zhipeng.yang.it@hotmail.com</string>
+    <string name="app_name">希小兔</string>
+    <string name="author">杨志鹏</string>
+
+    <string name="hello_bunny">你好 希小兔</string>
+
+    <string name="reserved_action">保留位置</string>
+
+
+    <!--Menus/Items/Buttons/Actions-->
+    <string name="action_settings">设置</string>
+    <string name="settings">设置</string>
+
+    <string name="navigation_drawer_open">打开选项栏</string>
+    <string name="navigation_drawer_close">关闭选项栏</string>
+
+    <string name="properties">属性</string>
+    <string name="equipments">装备</string>
+    <string name="actions">行动</string>
+
+    <string name="account">账户</string>
+    <string name="login">登录</string>
+    <string name="log_out">登出</string>
+    <string name="feedback">意见/建议</string>
+
+    <string name="nav_city">城镇</string>
+    <string name="nav_school">学校</string>
+    <string name="nav_hospital">医院</string>
+    <string name="nav_park">公园</string>
+    <string name="nav_factory">工厂</string>
+    <string name="nav_restaurant">餐厅</string>
+    <string name="nav_microsoft_research">微软研究院</string>
+    <string name="nav_google">谷歌公司</string>
+    <string name="nav_rotten_apple">烂苹果集团</string>
+    <string name="nav_abandoned_house">废弃大屋</string>
+
+    <string name="nav_home">兔窝</string>
+    <string name="nav_gallery">相册</string>
+    <string name="nav_shop">商店</string>
+
+    <string name="nav_communicate">推荐给朋友</string>
+
+    <string name="nav_share">分享</string>
+    <string name="nav_send">发送</string>
+
+    <string name="contact_author">联系作者: zhipeng.yang.it@hotmail.com</string>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_city"
+            android:icon="@drawable/ic_menu_city"
+            android:title="@string/nav_city">
+            <menu>
+                <item
+                    android:id="@+id/school"
+                    android:icon="@drawable/ic_menu_school"
+                    android:title="@string/nav_school" />
+                <item
+                    android:id="@+id/hospital"
+                    android:icon="@drawable/ic_menu_hospital"
+                    android:title="@string/nav_hospital" />
+                <item
+                    android:id="@+id/park"
+                    android:icon="@drawable/ic_menu_park"
+                    android:title="@string/nav_park" />
+                <item
+                    android:id="@+id/restaurant"
+                    android:icon="@drawable/ic_menu_restaurant"
+                    android:title="@string/nav_restaurant" />
+                <item
+                    android:id="@+id/microsoft_research"
+
+                    android:title="@string/nav_microsoft_research" />
+                <item
+                    android:id="@+id/google_corp"
+                    android:title="@string/nav_google" />
+                <item
+                    android:id="@+id/rotten_apple"
+                    android:title="@string/nav_rotten_apple" />
+                <item
+                    android:id="@+id/factory"
+                    android:title="@string/nav_factory" />
+                <item
+                    android:id="@+id/abandoned_house"
+                    android:title="@string/nav_abandoned_house" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/nav_gallery" />
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/ic_menu_shop"
+            android:title="@string/nav_shop" />
+    </group>
+
+    <item android:title="@string/nav_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/nav_share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/nav_send" />
+        </menu>
+    </item>
+
+</menu>

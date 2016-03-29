@@ -5,17 +5,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Toast;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends AppCompatActivity {
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         setTitle(R.string.settings);
-        Toast.makeText(getApplicationContext(), "Settings Activity", Toast.LENGTH_LONG).show();
-        super.onCreate(savedInstanceState, persistentState);
     }
 
     @Override

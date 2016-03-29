@@ -19,6 +19,4 @@ public class MainPageFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.main_page_fragment, container, false);
     }
-
-    
 }

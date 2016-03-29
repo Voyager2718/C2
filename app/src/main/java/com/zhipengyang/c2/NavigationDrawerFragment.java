@@ -1,5 +1,6 @@
 package com.zhipengyang.c2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -253,7 +254,6 @@ public class NavigationDrawerFragment extends Fragment {
                 return true;
             case R.id.action_settings:
                 return true;
-
         }
 
         return super.onOptionsItemSelected(item);

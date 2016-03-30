@@ -1,5 +1,7 @@
 package com.zhipengyang.bunnyc2;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +19,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,43 +95,66 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_city) {
-            Toast.makeText(getApplicationContext(), "City (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.school) {
-            Toast.makeText(getApplicationContext(), "School (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.hospital) {
-            Toast.makeText(getApplicationContext(), "Hospital (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.park) {
-            Toast.makeText(getApplicationContext(), "Park (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.restaurant) {
-            Toast.makeText(getApplicationContext(), "Restaurant (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.microsoft_research) {
-            Toast.makeText(getApplicationContext(), "Microsoft Research (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.google_corp) {
-            Toast.makeText(getApplicationContext(), "Google Corp (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.rotten_apple) {
-            Toast.makeText(getApplicationContext(), "Rotten apple Corp (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.abandoned_house) {
-            Toast.makeText(getApplicationContext(), "Abandoned house (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_home) {
-            Toast.makeText(getApplicationContext(), "Home (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_gallery) {
-            Toast.makeText(getApplicationContext(), "Gallery (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_shop) {
-            Toast.makeText(getApplicationContext(), "Shop (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_share) {
-            Toast.makeText(getApplicationContext(), "Share (Not implemented yet)", Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_send) {
-            Toast.makeText(getApplicationContext(), "Send (Not implemented yet)", Toast.LENGTH_LONG).show();
+        switch (id) {
+            case R.id.nav_city:
+                Toast.makeText(getApplicationContext(), "City (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.school:
+                Toast.makeText(getApplicationContext(), "School (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.hospital:
+                Toast.makeText(getApplicationContext(), "Hospital (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.park:
+                Toast.makeText(getApplicationContext(), "Park (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.restaurant:
+                Toast.makeText(getApplicationContext(), "Restaurant (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.microsoft_research:
+                Toast.makeText(getApplicationContext(), "Microsoft Research (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.google_corp:
+                Toast.makeText(getApplicationContext(), "Google Corp (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.rotten_apple:
+                Toast.makeText(getApplicationContext(), "Rotten apple Corp (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.abandoned_house:
+                Toast.makeText(getApplicationContext(), "Abandoned house (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_home:
+                HomeFragment homeFragment = new HomeFragment();
+                fragmentTransaction.add(R.id.main_container, homeFragment).commit();
+                break;
+            case R.id.nav_gallery:
+                Toast.makeText(getApplicationContext(), "Gallery (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_shop:
+                Toast.makeText(getApplicationContext(), "Shop (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_share:
+                Toast.makeText(getApplicationContext(), "Share (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_send:
+                Toast.makeText(getApplicationContext(), "Send (Not implemented yet)", Toast.LENGTH_LONG).show();
+                break;
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer == null) {
+        if (drawer == null)
+
+        {
             Toast.makeText(getApplicationContext(), "Error code: 0x0004", Toast.LENGTH_LONG).show();
             return true;
         }
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

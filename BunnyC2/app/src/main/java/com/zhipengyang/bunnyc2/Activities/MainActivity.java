@@ -1,4 +1,4 @@
-package com.zhipengyang.bunnyc2;
+package com.zhipengyang.bunnyc2.Activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,12 +17,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.zhipengyang.bunnyc2.Fragments.HomeFragment;
+import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.Structure.SceneCanvas;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        setContentView(new SceneCanvas(this));
+        //setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

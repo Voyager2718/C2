@@ -1,4 +1,4 @@
-package com.zhipengyang.bunnyc2;
+package com.zhipengyang.bunnyc2.Activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.zhipengyang.bunnyc2.R;
 
 
 public class SettingsActivity extends Activity {

@@ -17,9 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.zhipengyang.bunnyc2.Fragments.HomeFragment;
+import com.zhipengyang.bunnyc2.Fragments.Actives.HomeFragment;
 import com.zhipengyang.bunnyc2.R;
-import com.zhipengyang.bunnyc2.Structure.SceneCanvas;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,8 +26,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(new SceneCanvas(this));
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

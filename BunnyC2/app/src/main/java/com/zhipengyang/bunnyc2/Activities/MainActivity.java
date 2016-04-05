@@ -1,4 +1,4 @@
-package com.zhipengyang.bunnyc2.Activities;
+package com.zhipengyang.bunnyc2.activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.zhipengyang.bunnyc2.Fragments.Actives.HomeFragment;
+import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 import com.zhipengyang.bunnyc2.R;
 
 public class MainActivity extends AppCompatActivity
@@ -102,9 +102,7 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        int id = item.getItemId();
-
-        switch (id) {
+        switch (item.getItemId()) {
             case R.id.nav_city:
                 Toast.makeText(getApplicationContext(), "City (Not implemented yet)", Toast.LENGTH_LONG).show();
                 break;
@@ -135,6 +133,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_home:
                 HomeFragment homeFragment = new HomeFragment();
                 fragmentTransaction.add(R.id.main_container, homeFragment).commit();
+                setTitle(R.string.nav_home);
                 break;
             case R.id.nav_gallery:
                 Toast.makeText(getApplicationContext(), "Gallery (Not implemented yet)", Toast.LENGTH_LONG).show();
@@ -149,7 +148,6 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(), "Send (Not implemented yet)", Toast.LENGTH_LONG).show();
                 break;
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer == null)

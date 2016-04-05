@@ -1,4 +1,4 @@
-package com.zhipengyang.bunnyc2.Activities;
+package com.zhipengyang.bunnyc2.activities;
 
 import android.app.Activity;
 import android.content.Context;

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.AttributeSet;
 import android.view.View;
 
 import com.zhipengyang.bunnyc2.R;
@@ -17,6 +18,15 @@ public class SceneCanvas extends View {
 
     public SceneCanvas(Context context) {
         super(context);
+        init();
+    }
+
+    public SceneCanvas(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        init();
+    }
+
+    private void init() {
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2));
     }
 

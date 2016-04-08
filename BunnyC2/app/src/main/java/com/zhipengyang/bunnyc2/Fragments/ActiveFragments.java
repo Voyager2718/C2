@@ -4,7 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zhipengyang.bunnyc2.structure.SceneCanvas;
+import com.zhipengyang.bunnyc2.canvas.SceneCanvas;
 
 public class ActiveFragments extends Fragment {
     protected SceneCanvas sceneCanvas;

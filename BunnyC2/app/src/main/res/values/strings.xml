@@ -51,4 +51,7 @@
 
     <!-- Phases -->
     <string name="contact_author">Contact author: zhipeng.yang.it@hotmail.com</string>
+
+    <!-- Skills -->
+    <string name="simple_skill_description">A skill</string>
 </resources>

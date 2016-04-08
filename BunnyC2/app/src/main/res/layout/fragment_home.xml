@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#08f"
     android:orientation="horizontal"
     android:paddingTop="55dp">
 
-    <com.zhipengyang.bunnyc2.structure.SceneCanvas
+    <com.zhipengyang.bunnyc2.canvas.SceneCanvas
         android:id="@+id/home_canvas"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

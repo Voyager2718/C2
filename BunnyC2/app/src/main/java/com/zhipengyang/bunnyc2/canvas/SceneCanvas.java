@@ -1,4 +1,4 @@
-package com.zhipengyang.bunnyc2.structure;
+package com.zhipengyang.bunnyc2.canvas;
 
 import android.content.Context;
 import android.graphics.Bitmap;

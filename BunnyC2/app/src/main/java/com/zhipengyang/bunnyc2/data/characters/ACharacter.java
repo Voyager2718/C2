@@ -5,7 +5,7 @@ import com.zhipengyang.bunnyc2.data.skills.ISkill;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Character {
+public abstract class ACharacter {
     protected int hp;
     protected int mp;
     protected int attack;
@@ -21,15 +21,16 @@ public abstract class Character {
 
     protected List<ISkill> skills = new ArrayList<ISkill>();
 
-    public void addSkills(List<ISkill> skills) {
+    public ACharacter addSkills(List<ISkill> skills) {
         this.skills = skills;
+        return this;
     }
 
     public List<ISkill> getSkills() {
         return this.skills;
     }
 
-    public Character addSkill(ISkill skill) {
+    public ACharacter addSkill(ISkill skill) {
         this.skills.add(skill);
         return this;
     }
@@ -38,7 +39,7 @@ public abstract class Character {
         return hp;
     }
 
-    public Character setHp(int hp) {
+    public ACharacter setHp(int hp) {
         this.hp = hp;
         return this;
     }
@@ -47,7 +48,7 @@ public abstract class Character {
         return mp;
     }
 
-    public Character setMp(int mp) {
+    public ACharacter setMp(int mp) {
         this.mp = mp;
         return this;
     }
@@ -56,7 +57,7 @@ public abstract class Character {
         return attack;
     }
 
-    public Character setAttack(int attack) {
+    public ACharacter setAttack(int attack) {
         this.attack = attack;
         return this;
     }
@@ -65,7 +66,7 @@ public abstract class Character {
         return defense;
     }
 
-    public Character setDefense(int defense) {
+    public ACharacter setDefense(int defense) {
         this.defense = defense;
         return this;
     }
@@ -74,7 +75,7 @@ public abstract class Character {
         return specialAttack;
     }
 
-    public Character setSpecialAttack(int specialAttack) {
+    public ACharacter setSpecialAttack(int specialAttack) {
         this.specialAttack = specialAttack;
         return this;
     }
@@ -83,7 +84,7 @@ public abstract class Character {
         return specialDefense;
     }
 
-    public Character setSpecialDefense(int specialDefense) {
+    public ACharacter setSpecialDefense(int specialDefense) {
         this.specialDefense = specialDefense;
         return this;
     }
@@ -92,7 +93,7 @@ public abstract class Character {
         return speed;
     }
 
-    public Character setSpeed(int speed) {
+    public ACharacter setSpeed(int speed) {
         this.speed = speed;
         return this;
     }
@@ -101,7 +102,7 @@ public abstract class Character {
         return name;
     }
 
-    public Character setName(String name) {
+    public ACharacter setName(String name) {
         this.name = name;
         return this;
     }

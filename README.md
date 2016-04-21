@@ -1,5 +1,3 @@
-Bunny C2
-
 Resume
 ==
 This is a open source digital pet game based on Android.

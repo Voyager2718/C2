@@ -21,7 +21,11 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //Find views
         properties = (Button) view.findViewById(R.id.properties);
+
+        //Listeners
         properties.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -32,6 +36,14 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         });
+
+        properties.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
         return view;
     }
 }

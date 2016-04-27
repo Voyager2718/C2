@@ -30,8 +30,6 @@ public class HomeCanvas extends View {
     private void init() {
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2));
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.home));
-
-
     }
 
     @Override

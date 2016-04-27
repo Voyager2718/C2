@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:paddingTop="55dp">
 
-    <com.zhipengyang.bunnyc2.canvas.SceneCanvas
+    <com.zhipengyang.bunnyc2.canvas.HomeCanvas
         android:id="@+id/home_canvas"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

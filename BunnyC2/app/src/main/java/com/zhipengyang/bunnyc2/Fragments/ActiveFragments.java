@@ -4,10 +4,10 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zhipengyang.bunnyc2.canvas.SceneCanvas;
+import com.zhipengyang.bunnyc2.canvas.HomeCanvas;
 
 public class ActiveFragments extends Fragment {
-    protected SceneCanvas sceneCanvas;
+    protected HomeCanvas sceneCanvas;
 
     public View getCanvas() {
         return sceneCanvas;

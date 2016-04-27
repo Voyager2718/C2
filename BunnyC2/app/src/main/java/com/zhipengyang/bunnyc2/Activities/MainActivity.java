@@ -15,7 +15,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +22,14 @@ import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
 import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,7 +43,58 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Detect version
+        //Version detect
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    BufferedReader in = null;
+                    String data = null;
+                    HttpURLConnection connection = null;
+                    StringBuffer stringBuffer = null;
+                    BufferedReader bufferedReader = null;
+                    try {
+                        URL url = new URL("https://raw.githubusercontent.com/Voyager2718/Voyager2718.github.io/master/C2/App/Android/ver.xml");
+                        connection = (HttpURLConnection) url.openConnection();
+                        connection.connect();
+
+                        InputStream inputStream = connection.getInputStream();
+
+                        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                        stringBuffer = new StringBuffer();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null)
+                            stringBuffer.append(line);
+
+                        final String str = stringBuffer.toString();
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                
+                            }
+                        });
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (connection != null)
+                            connection.disconnect();
+                        try {
+                            if (bufferedReader != null)
+                                bufferedReader.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else
+                    Toast.makeText(getApplicationContext(), getString(R.string.network_error), Toast.LENGTH_SHORT).show();
+            }
+        }).start();
 
 
         FloatingActionButton fab;

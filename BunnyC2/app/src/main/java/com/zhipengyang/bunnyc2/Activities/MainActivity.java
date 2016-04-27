@@ -17,8 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -104,31 +104,31 @@ public class MainActivity extends AppCompatActivity
 
         switch (item.getItemId()) {
             case R.id.nav_city:
-                Toast.makeText(getApplicationContext(), "City (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "City (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.school:
-                Toast.makeText(getApplicationContext(), "School (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "School (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.hospital:
-                Toast.makeText(getApplicationContext(), "Hospital (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Hospital (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.park:
-                Toast.makeText(getApplicationContext(), "Park (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Park (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.restaurant:
-                Toast.makeText(getApplicationContext(), "Restaurant (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Restaurant (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.microsoft_research:
-                Toast.makeText(getApplicationContext(), "Microsoft Research (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Microsoft Research (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.google_corp:
-                Toast.makeText(getApplicationContext(), "Google Corp (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Google Corp (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.rotten_apple:
-                Toast.makeText(getApplicationContext(), "Rotten apple Corp (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Rotten apple Corp (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.abandoned_house:
-                Toast.makeText(getApplicationContext(), "Abandoned house (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Abandoned house (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_home:
                 HomeFragment homeFragment = new HomeFragment();
@@ -136,16 +136,16 @@ public class MainActivity extends AppCompatActivity
                 setTitle(R.string.nav_home);
                 break;
             case R.id.nav_gallery:
-                Toast.makeText(getApplicationContext(), "Gallery (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Gallery (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_shop:
-                Toast.makeText(getApplicationContext(), "Shop (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Shop (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_share:
-                Toast.makeText(getApplicationContext(), "Share (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Share (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_send:
-                Toast.makeText(getApplicationContext(), "Send (Not implemented yet)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Send (Not been implemented yet)", Toast.LENGTH_LONG).show();
                 break;
         }
 

@@ -28,8 +28,10 @@ public class HomeFragment extends Fragment {
         properties = (Button) view.findViewById(R.id.properties);
         homeCanvas = (HomeCanvas) view.findViewById(R.id.home_canvas);
 
-
         //Listeners
+        /**
+         * Change button icon while touching.
+         */
         properties.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -44,7 +46,7 @@ public class HomeFragment extends Fragment {
         properties.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //homeCanvas.drawWindow(100, 100);//TODO: bug
             }
         });
 

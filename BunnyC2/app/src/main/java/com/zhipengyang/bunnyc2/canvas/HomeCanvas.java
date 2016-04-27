@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCanvas extends View {
-    private List<Bitmap> bitmaps = new ArrayList<Bitmap>();
+    private List<Bitmap> bitmaps = new ArrayList<>();
     private Canvas canvas;
 
     public HomeCanvas(Context context) {
@@ -39,13 +41,20 @@ public class HomeCanvas extends View {
         this.canvas = canvas;
 
         canvas.drawColor(Color.LTGRAY);
-        //Log.d("Nothing", String.valueOf(bitmaps.get(1).getWidth()) + String.valueOf(bitmaps.get(1).getHeight()));
-        //for (Bitmap bitmap : bitmaps)
         canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(1), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
         canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
+        canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 2, canvas.getHeight() / 2, null);
     }
 
-    public void drawRect(int width, int height) {
+    public void drawWindow(int width, int height) {
+        Rect rect = new Rect();
+        Paint paint = new Paint();
+        paint.setColor(Color.argb(200, 240, 240, 240));
 
+        rect.left = canvas.getWidth() - width;
+        rect.right = canvas.getWidth() - width;
+        rect.top = canvas.getHeight() - height;
+        rect.bottom = canvas.getHeight() - height;
+        canvas.drawRect(rect, paint);
     }
 }

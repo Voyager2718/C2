@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.canvas.HomeCanvas;
 
 public class HomeFragment extends Fragment {
     private Button properties;
+    private HomeCanvas homeCanvas;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class HomeFragment extends Fragment {
 
         //Find views
         properties = (Button) view.findViewById(R.id.properties);
+        homeCanvas = (HomeCanvas) view.findViewById(R.id.home_canvas);
+
 
         //Listeners
         properties.setOnTouchListener(new View.OnTouchListener() {
@@ -40,7 +44,7 @@ public class HomeFragment extends Fragment {
         properties.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 

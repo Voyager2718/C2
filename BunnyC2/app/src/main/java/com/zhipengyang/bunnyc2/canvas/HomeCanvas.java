@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCanvas extends View {
-    List<Bitmap> bitmaps = new ArrayList<Bitmap>();
+    private List<Bitmap> bitmaps = new ArrayList<Bitmap>();
+    private Canvas canvas;
 
     public HomeCanvas(Context context) {
         super(context);
@@ -35,11 +36,16 @@ public class HomeCanvas extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        this.canvas = canvas;
 
         canvas.drawColor(Color.LTGRAY);
         //Log.d("Nothing", String.valueOf(bitmaps.get(1).getWidth()) + String.valueOf(bitmaps.get(1).getHeight()));
         //for (Bitmap bitmap : bitmaps)
         canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(1), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
         canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
+    }
+
+    public void drawRect(int width, int height) {
+
     }
 }

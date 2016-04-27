@@ -3,7 +3,7 @@
     android:id="@+id/home_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#08f"
+    android:background="#ccc"
     android:orientation="horizontal"
     android:paddingTop="55dp">
 

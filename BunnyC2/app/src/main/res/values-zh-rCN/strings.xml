@@ -2,6 +2,11 @@
 <resources>
     <string name="email">邮箱：zhipeng.yang.it@hotmail.com</string>
     <string name="network_error">网络错误，无法检查更新</string>
+    <string name="update">更新程序</string>
+    <string name="update_available">有新更新：</string>
+    <string name="go_update">是否更新？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
 
     <string name="app_name">希小兔</string>
     <string name="author">杨志鹏</string>

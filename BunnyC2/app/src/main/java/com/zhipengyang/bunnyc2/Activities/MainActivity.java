@@ -3,6 +3,7 @@ package com.zhipengyang.bunnyc2.activities;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -22,6 +24,9 @@ import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
 import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +38,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private int version = 10;
+    private int internalVersion = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity
                     StringBuffer stringBuffer = null;
                     BufferedReader bufferedReader = null;
                     try {
-                        URL url = new URL("https://raw.githubusercontent.com/Voyager2718/Voyager2718.github.io/master/C2/App/Android/ver.xml");
+                        URL url = new URL("https://raw.githubusercontent.com/Voyager2718/Voyager2718.github.io/master/C2/App/Android/ver.json");
                         connection = (HttpURLConnection) url.openConnection();
                         connection.connect();
 
@@ -74,7 +79,33 @@ public class MainActivity extends AppCompatActivity
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                
+                                try {
+                                    JSONObject jsonObject = new JSONObject(str);
+                                    String ver = jsonObject.getString("version");
+                                    int internalVer = Integer.parseInt(jsonObject.getString("internal_version"));
+                                    Toast.makeText(getApplicationContext(), String.valueOf(internalVer), Toast.LENGTH_LONG).show();
+                                    if (internalVersion < internalVer) {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                                        builder.setMessage(getString(R.string.update_available))
+                                                .setCancelable(true)
+                                                .setPositiveButton(getString(R.string.yes),
+                                                        new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
+                                                            }
+                                                        })
+                                                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                        builder.create().show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                     } catch (MalformedURLException e) {

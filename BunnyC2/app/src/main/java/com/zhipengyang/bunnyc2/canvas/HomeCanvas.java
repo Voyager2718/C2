@@ -43,7 +43,6 @@ public class HomeCanvas extends View {
         canvas.drawColor(Color.LTGRAY);
         canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(1), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
         canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
-        canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 2, canvas.getHeight() / 2, null);
     }
 
     public void drawWindow(int width, int height) {

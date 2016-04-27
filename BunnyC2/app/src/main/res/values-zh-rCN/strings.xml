@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="email">邮箱：zhipeng.yang.it@hotmail.com</string>
+    <string name="network_error">网络错误，无法检查更新</string>
+
     <string name="app_name">希小兔</string>
     <string name="author">杨志鹏</string>
 

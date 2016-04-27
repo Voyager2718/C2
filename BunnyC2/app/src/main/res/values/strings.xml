@@ -1,6 +1,7 @@
 <resources>
     <!-- Common strings -->
     <string name="email">zhipeng.yang.it@hotmail.com</string>
+    <string name="network_error">Disconnected, unable to check updates</string>
 
     <string name="hello_bunny">Hello, Bunny!</string>
 

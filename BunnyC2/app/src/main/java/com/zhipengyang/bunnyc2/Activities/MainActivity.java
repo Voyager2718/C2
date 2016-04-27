@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(getApplicationContext(), getString(R.string.network_error), Toast.LENGTH_SHORT).show();
             }
         }).start();
-
+        //Update detection ended
 
         FloatingActionButton fab;
         if ((fab = (FloatingActionButton) findViewById(R.id.fab)) == null) {

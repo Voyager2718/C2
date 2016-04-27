@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -43,15 +44,17 @@ public class MainActivity extends AppCompatActivity
     /**
      * Alert if update available
      */
-    private void alertUpdate() {
+    private void alertUpdate(String ver, String url) {
+        final String _url = url;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);//TODO: Here should use Activity
-        builder.setMessage(getString(R.string.update_available))
+        builder.setMessage(getString(R.string.update_available) + ver)
                 .setCancelable(true)
                 .setPositiveButton(getString(R.string.yes),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(_url));
+                                startActivity(browserIntent);
                             }
                         })
                 .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Version detect
+        //Version detect and update
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -104,9 +107,9 @@ public class MainActivity extends AppCompatActivity
                                     JSONObject jsonObject = new JSONObject(str);
                                     String ver = jsonObject.getString("version");
                                     int internalVer = Integer.parseInt(jsonObject.getString("internal_version"));
-                                    Toast.makeText(getApplicationContext(), String.valueOf(internalVer), Toast.LENGTH_LONG).show();
+                                    String updateUrl = jsonObject.getString("URL");
                                     if (internalVersion < internalVer) {
-                                        alertUpdate();
+                                        alertUpdate(ver, updateUrl);
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

@@ -40,6 +40,29 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private int internalVersion = 10;
 
+    /**
+     * Alert if update available
+     */
+    private void alertUpdate() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);//TODO: Here should use Activity
+        builder.setMessage(getString(R.string.update_available))
+                .setCancelable(true)
+                .setPositiveButton(getString(R.string.yes),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +78,8 @@ public class MainActivity extends AppCompatActivity
                 ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()) {
-                    BufferedReader in = null;
-                    String data = null;
                     HttpURLConnection connection = null;
-                    StringBuffer stringBuffer = null;
+                    StringBuffer stringBuffer;
                     BufferedReader bufferedReader = null;
                     try {
                         URL url = new URL("https://raw.githubusercontent.com/Voyager2718/Voyager2718.github.io/master/C2/App/Android/ver.json");
@@ -85,23 +106,7 @@ public class MainActivity extends AppCompatActivity
                                     int internalVer = Integer.parseInt(jsonObject.getString("internal_version"));
                                     Toast.makeText(getApplicationContext(), String.valueOf(internalVer), Toast.LENGTH_LONG).show();
                                     if (internalVersion < internalVer) {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                                        builder.setMessage(getString(R.string.update_available))
-                                                .setCancelable(true)
-                                                .setPositiveButton(getString(R.string.yes),
-                                                        new DialogInterface.OnClickListener() {
-                                                            @Override
-                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
-                                                            }
-                                                        })
-                                                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        dialog.cancel();
-                                                    }
-                                                });
-                                        builder.create().show();
+                                        alertUpdate();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

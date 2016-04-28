@@ -130,11 +130,17 @@ public class MainActivity extends AppCompatActivity
                             e.printStackTrace();
                         }
                     }
-                } else
-                    Toast.makeText(getApplicationContext(), getString(R.string.network_error), Toast.LENGTH_SHORT).show();
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), getString(R.string.network_error), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         }).start();
-        //Update detection ended
+        //Update detection endedu
 
         FloatingActionButton fab;
         if ((fab = (FloatingActionButton) findViewById(R.id.fab)) == null) {

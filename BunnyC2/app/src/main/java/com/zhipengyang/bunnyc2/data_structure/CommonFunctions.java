@@ -24,6 +24,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class CommonFunctions {
+    private CommonFunctions() {
+    }
+
     private static void alertUpdate(final Context applicationContext, final Activity activityContext, final String ver, final String description, final String releaseDate, final String url) {
         activityContext.runOnUiThread(new Runnable() {
             @Override

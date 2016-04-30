@@ -1,5 +1,6 @@
 package com.zhipengyang.bunnyc2.activities;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -23,7 +24,15 @@ import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int internalVersion = 11; //App version for detecting updates
+    public static int internalVersion = 14; //App version for detecting updates
+    private Fragment fragmentOpened = null;
+
+    private void removeOpenedFragment() {
+        if (fragmentOpened != null) {
+            getFragmentManager().beginTransaction().remove(fragmentOpened).commit();
+            fragmentOpened = null;
+        }
+    }
 
     /**
      * Alert if update available
@@ -111,49 +120,78 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         switch (item.getItemId()) {
+            //0
             case R.id.nav_city:
-                Toast.makeText(getApplicationContext(), "City (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "City (Working)", Toast.LENGTH_LONG).show();
                 break;
+            //1
             case R.id.school:
-                Toast.makeText(getApplicationContext(), "School (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "School (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //2
             case R.id.hospital:
-                Toast.makeText(getApplicationContext(), "Hospital (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Hospital (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //3
             case R.id.park:
-                Toast.makeText(getApplicationContext(), "Park (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Park (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //4
             case R.id.restaurant:
-                Toast.makeText(getApplicationContext(), "Restaurant (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Restaurant (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //5
             case R.id.microsoft_research:
-                Toast.makeText(getApplicationContext(), "Microsoft Research (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Microsoft Research (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //6
             case R.id.google_corp:
-                Toast.makeText(getApplicationContext(), "Google Corp (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Google Corp (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //7
             case R.id.rotten_apple:
-                Toast.makeText(getApplicationContext(), "Rotten apple Corp (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Rotten apple Corp (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //8
             case R.id.abandoned_house:
-                Toast.makeText(getApplicationContext(), "Abandoned house (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Abandoned house (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //9
             case R.id.nav_home:
                 HomeFragment homeFragment = new HomeFragment();
                 fragmentTransaction.add(R.id.main_container, homeFragment).commit();
                 setTitle(R.string.nav_home);
+                removeOpenedFragment();
+                fragmentOpened = homeFragment;
                 break;
+            //10
             case R.id.nav_gallery:
-                Toast.makeText(getApplicationContext(), "Gallery (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Gallery (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //11
             case R.id.nav_shop:
-                Toast.makeText(getApplicationContext(), "Shop (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Shop (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //12
             case R.id.nav_share:
-                Toast.makeText(getApplicationContext(), "Share (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Share (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
+            //13
             case R.id.nav_send:
-                Toast.makeText(getApplicationContext(), "Send (Not been implemented yet)", Toast.LENGTH_LONG).show();
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Send (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
         }
 

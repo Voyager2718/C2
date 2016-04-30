@@ -3,7 +3,7 @@
     <string name="email">zhipeng.yang.it@hotmail.com</string>
     <string name="network_error">Disconnected, unable to check updates</string>
     <string name="update">Update</string>
-    <string name="update_available">Update available\nVersion:</string>
+    <string name="update_available">Update available\nVersion: </string>
     <string name="go_update">Update?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

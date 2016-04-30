@@ -2,12 +2,7 @@ package com.zhipengyang.bunnyc2.activities;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,48 +18,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.data_structure.CommonFunctions;
 import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private int internalVersion = 10;
+    private int internalVersion = 11;
 
     /**
      * Alert if update available
      */
-    private void alertUpdate(String ver, String url) {
-        final String _url = url;
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);//TODO: Here should use Activity
-        builder.setMessage(getString(R.string.update_available) + ver)
-                .setCancelable(true)
-                .setPositiveButton(getString(R.string.yes),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(_url));
-                                startActivity(browserIntent);
-                            }
-                        })
-                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        builder.create().show();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,73 +36,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Version detect and update
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-                if (networkInfo != null && networkInfo.isConnected()) {
-                    HttpURLConnection connection = null;
-                    StringBuffer stringBuffer;
-                    BufferedReader bufferedReader = null;
-                    try {
-                        URL url = new URL("https://raw.githubusercontent.com/Voyager2718/Voyager2718.github.io/master/C2/App/Android/ver.json");
-                        connection = (HttpURLConnection) url.openConnection();
-                        connection.connect();
-
-                        InputStream inputStream = connection.getInputStream();
-
-                        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-                        stringBuffer = new StringBuffer();
-                        String line;
-                        while ((line = bufferedReader.readLine()) != null)
-                            stringBuffer.append(line);
-
-                        final String str = stringBuffer.toString();
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    JSONObject jsonObject = new JSONObject(str);
-                                    String ver = jsonObject.getString("version");
-                                    int internalVer = Integer.parseInt(jsonObject.getString("internal_version"));
-                                    String updateUrl = jsonObject.getString("URL");
-                                    if (internalVersion < internalVer) {
-                                        alertUpdate(ver, updateUrl);
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        if (connection != null)
-                            connection.disconnect();
-                        try {
-                            if (bufferedReader != null)
-                                bufferedReader.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                } else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), getString(R.string.network_error), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-            }
-        }).start();
-        //Update detection endedu
+        CommonFunctions.detectUpdates(getApplicationContext(), this, internalVersion);
 
         FloatingActionButton fab;
         if ((fab = (FloatingActionButton) findViewById(R.id.fab)) == null) {

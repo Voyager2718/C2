@@ -24,7 +24,7 @@ import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int internalVersion = 14; //App version for detecting updates
+    public static int internalVersion = 16; //App version for detecting updates
     private Fragment fragmentOpened = null;
 
     private void removeOpenedFragment() {
@@ -161,11 +161,16 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(), "Rotten apple Corp (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
             //8
+            case R.id.factory:
+                removeOpenedFragment();
+                Toast.makeText(getApplicationContext(), "Factory (Coming Soon..)", Toast.LENGTH_LONG).show();
+                break;
+            //9
             case R.id.abandoned_house:
                 removeOpenedFragment();
                 Toast.makeText(getApplicationContext(), "Abandoned house (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
-            //9
+            //10
             case R.id.nav_home:
                 HomeFragment homeFragment = new HomeFragment();
                 fragmentTransaction.add(R.id.main_container, homeFragment).commit();
@@ -173,22 +178,22 @@ public class MainActivity extends AppCompatActivity
                 removeOpenedFragment();
                 fragmentOpened = homeFragment;
                 break;
-            //10
+            //11
             case R.id.nav_gallery:
                 removeOpenedFragment();
                 Toast.makeText(getApplicationContext(), "Gallery (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
-            //11
+            //12
             case R.id.nav_shop:
                 removeOpenedFragment();
                 Toast.makeText(getApplicationContext(), "Shop (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
-            //12
+            //13
             case R.id.nav_share:
                 removeOpenedFragment();
                 Toast.makeText(getApplicationContext(), "Share (Coming Soon..)", Toast.LENGTH_LONG).show();
                 break;
-            //13
+            //14
             case R.id.nav_send:
                 removeOpenedFragment();
                 Toast.makeText(getApplicationContext(), "Send (Coming Soon..)", Toast.LENGTH_LONG).show();

@@ -24,19 +24,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class CommonFunctions {
-    private static void alertUpdate(final Context applicationContext, final Activity activityContext, final String ver, final String url, final String description) {
+    private static void alertUpdate(final Context applicationContext, final Activity activityContext, final String ver, final String description, final String releaseDate, final String url) {
         activityContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activityContext);//TODO: Here should use Activity
-                builder.setMessage(applicationContext.getString(R.string.update_available) + ver + "\n\n" + description + "\n\n" + applicationContext.getString(R.string.go_update))
+                builder.setMessage(applicationContext.getString(R.string.update_available) + ver + "@" + releaseDate + "\n\n" + description + "\n\n" + applicationContext.getString(R.string.go_update))
                         .setCancelable(true)
                         .setPositiveButton(applicationContext.getString(R.string.yes),
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                                        applicationContext.startActivity(browserIntent);
+                                        activityContext.startActivity(browserIntent);
                                     }
                                 })
                         .setNegativeButton(applicationContext.getString(R.string.no), new DialogInterface.OnClickListener() {
@@ -90,11 +90,13 @@ public final class CommonFunctions {
                                     JSONObject jsonObject = new JSONObject(str);
                                     String ver = jsonObject.getString("version");
                                     String description = jsonObject.getString("description");
+                                    String releaseDate = jsonObject.getString("release_date");
                                     int internalVer = Integer.parseInt(jsonObject.getString("internal_version"));
                                     String updateUrl = jsonObject.getString("URL");
                                     if (internalVersion < internalVer) {
-                                        alertUpdate(applicationContext, activityContext, ver, updateUrl, description);
-                                    }
+                                        alertUpdate(applicationContext, activityContext, ver, description, releaseDate, updateUrl);
+                                    } else
+                                        Toast.makeText(applicationContext.getApplicationContext(), applicationContext.getString(R.string.up_to_date) + ver, Toast.LENGTH_SHORT).show();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

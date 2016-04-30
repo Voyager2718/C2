@@ -5,6 +5,7 @@
     <string name="update">更新程序</string>
     <string name="check_update">检查更新</string>
     <string name="check">检查</string>
+    <string name="up_to_date">正在运行最新版软件：</string>
     <string name="update_available">新更新可用\n版本号：</string>
     <string name="go_update">是否更新？</string>
     <string name="yes">是</string>

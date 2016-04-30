@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.data_structure.CommonFunctions;
 
 
 public class SettingsActivity extends Activity {
@@ -24,6 +25,16 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Not been implemented yet.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        final SettingsActivity activity = this;
+
+        Button checkUpdates = (Button) findViewById(R.id.check);
+        checkUpdates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonFunctions.detectUpdates(getApplicationContext(), activity, MainActivity.internalVersion);
             }
         });
     }

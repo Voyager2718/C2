@@ -23,7 +23,7 @@ import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private int internalVersion = 11;
+    public static int internalVersion = 11; //App version for detecting updates
 
     /**
      * Alert if update available

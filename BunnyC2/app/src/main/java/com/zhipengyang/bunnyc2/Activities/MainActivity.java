@@ -24,7 +24,7 @@ import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int internalVersion = 17; //App version for detecting updates
+    public static int internalVersion = 18; //App version for detecting updates
     private Fragment fragmentOpened = null;
 
     private void removeOpenedFragment() {

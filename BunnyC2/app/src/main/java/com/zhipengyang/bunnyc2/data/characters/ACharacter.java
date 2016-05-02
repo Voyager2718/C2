@@ -1,11 +1,12 @@
 package com.zhipengyang.bunnyc2.data.characters;
 
+import com.zhipengyang.bunnyc2.data.EventListener;
 import com.zhipengyang.bunnyc2.data.skills.ISkill;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ACharacter {
+public abstract class ACharacter implements EventListener {
     protected int hp;
     protected int mp;
     protected int attack;

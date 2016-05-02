@@ -19,6 +19,7 @@ import java.util.List;
 public class HomeCanvas extends View {
     private List<Bitmap> bitmaps = new ArrayList<>();
     private Canvas canvas;
+    private Paint paintBrush;
 
     public HomeCanvas(Context context) {
         super(context);
@@ -33,6 +34,7 @@ public class HomeCanvas extends View {
     private void init() {
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2));
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.home));
+        paintBrush = new Paint();
     }
 
     @Override
@@ -40,9 +42,13 @@ public class HomeCanvas extends View {
         super.onDraw(canvas);
         this.canvas = canvas;
 
+        paintBrush.setColor(Color.parseColor("lightgray"));
+        paintBrush.setStrokeWidth(10);
+
         canvas.drawColor(Color.LTGRAY);
         canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(1), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
         canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
+        canvas.drawRect(100, 100, 800, 800, paintBrush);
     }
 
     public void drawWindow(int width, int height) {

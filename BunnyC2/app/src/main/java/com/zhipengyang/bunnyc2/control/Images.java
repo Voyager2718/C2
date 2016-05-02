@@ -5,10 +5,10 @@ import android.graphics.Matrix;
 
 public class Images {
     /**
-     * @param bitmap: Bitmap to resize.
-     * @param width:  Don't resize if width = 0
-     * @param height: Don't resize if height = 0
-     * @return: Bitmap resized
+     * @param bitmap Bitmap to resize.
+     * @param width  Don't resize if width = 0
+     * @param height Don't resize if height = 0
+     * @return Bitmap resized
      */
     public static Bitmap resizeBitmap(Bitmap bitmap, int width, int height) {
         if (bitmap == null)

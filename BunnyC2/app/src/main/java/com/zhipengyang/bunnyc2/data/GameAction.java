@@ -5,5 +5,5 @@ package com.zhipengyang.bunnyc2.data;
  * In order to run specifics functions while reaching a certain time or event, I use visitor pattern to visit each class.
  */
 public interface GameAction {
-    void visit(EventListener eventListener);//FIXME: Add different type of arguments if necessary.
+    public void visit(TestListener testListener);
 }

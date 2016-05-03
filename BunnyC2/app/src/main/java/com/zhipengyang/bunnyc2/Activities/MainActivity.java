@@ -19,13 +19,16 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.data.TestListener;
 import com.zhipengyang.bunnyc2.data_structure.CommonFunctions;
 import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
+import com.zhipengyang.bunnyc2.gameManagers.HeartBeat;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static int internalVersion = 18; //App version for detecting updates
     private Fragment fragmentOpened = null;
+    private static HeartBeat heartBeat = null;
 
     private void removeOpenedFragment() {
         if (fragmentOpened != null) {
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TestListener testListener = new TestListener();
+        HeartBeat heartBeat = HeartBeat.getInstance();
 
         CommonFunctions.detectUpdates(getApplicationContext(), this, internalVersion);
 

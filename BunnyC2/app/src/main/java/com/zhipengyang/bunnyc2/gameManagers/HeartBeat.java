@@ -124,7 +124,7 @@ public final class HeartBeat {
      *
      * @return An instance of HeartBeat
      */
-    public HeartBeat getInstance() {
+    public static HeartBeat getInstance() {
         if (INSTANCE == null) {
             synchronized (HeartBeat.class) {
                 if (INSTANCE == null)

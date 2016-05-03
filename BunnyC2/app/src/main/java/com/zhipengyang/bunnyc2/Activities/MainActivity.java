@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
+import com.zhipengyang.bunnyc2.data.TestAction;
 import com.zhipengyang.bunnyc2.data.TestListener;
 import com.zhipengyang.bunnyc2.data_structure.CommonFunctions;
 import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
@@ -48,9 +49,12 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Begin the game loop
         TestListener testListener = new TestListener();
         HeartBeat heartBeat = HeartBeat.getInstance();
+        heartBeat.setEventListener(testListener, new TestAction(), 1000);
 
+        //Detect updates
         CommonFunctions.detectUpdates(getApplicationContext(), this, internalVersion);
 
         FloatingActionButton fab;

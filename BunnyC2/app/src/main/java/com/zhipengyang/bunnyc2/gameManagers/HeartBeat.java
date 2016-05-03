@@ -1,5 +1,7 @@
 package com.zhipengyang.bunnyc2.gameManagers;
 
+import android.util.Log;
+
 import com.zhipengyang.bunnyc2.data.EventListener;
 import com.zhipengyang.bunnyc2.data.GameAction;
 
@@ -77,12 +79,13 @@ public final class HeartBeat {
                     time = time > biggestTimeOut ? time + 1 : 0;
 
                     try {
+                        Log.d("_________EVENT_________", "Thread");
                         Thread.sleep(1);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }
-            });//TODO : Add a iterator to visit related classes.
+            });
         }
     }
 
@@ -93,6 +96,7 @@ public final class HeartBeat {
      */
     public int setEventListener(EventListener eventListener, GameAction gameAction, int timeOut) {//FIXME : Throw Exception if timeOut <= 0
         synchronized (this) {
+            Log.d("_________EVENT_________", "setEventListener");
             timeListeners.put(listenersHandle, new Listener(eventListener, gameAction, timeOut));
 
             //Invoke function when reach the smallest timeout.

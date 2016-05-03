@@ -5,5 +5,5 @@ package com.zhipengyang.bunnyc2.data;
  * In order to run specifics functions while reaching a certain time or event, I use visitor pattern to visit each class.
  */
 public interface EventListener {
-    void onEventArrived(GameEvent gameEvent);
+    void onEventArrived(GameAction gameEvent);
 }

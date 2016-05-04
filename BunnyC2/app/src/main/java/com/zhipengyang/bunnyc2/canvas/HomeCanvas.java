@@ -31,14 +31,26 @@ public class HomeCanvas extends View {
         init();
     }
 
+    private Bitmap home = BitmapFactory.decodeResource(getResources(), R.drawable.home);
+
     private void init() {
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2));
+        /*
+        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand1));
+        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand2));
+        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand3));
+        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand4));
+        */
         bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.home));
         paintBrush = new Paint();
     }
 
+    protected void animateCharacter(final Canvas canvas) {
+        //TODO
+    }
+
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
         this.canvas = canvas;
 
@@ -47,8 +59,27 @@ public class HomeCanvas extends View {
 
         canvas.drawColor(Color.LTGRAY);
         canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(1), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
+        //canvas.drawBitmap(Images.resizeBitmap(home, canvas.getWidth(), canvas.getHeight()), 0, 0, null);
+
         canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
-        canvas.drawRect(100, 100, 800, 800, paintBrush);
+
+        /*
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (Bitmap bitmap : bitmaps) {
+                    canvas.drawBitmap(bitmap, canvas.getWidth() / 4, canvas.getHeight() / 4, null);
+                    try {
+                        Thread.sleep(250);
+                    } catch (InterruptedException e) {
+                        Thread.interrupted();
+                    }
+                }
+            }
+        }).start();
+        */
+
+        //canvas.drawRect(100, 100, 800, 800, paintBrush);
     }
 
     public void drawWindow(int width, int height) {

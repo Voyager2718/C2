@@ -21,13 +21,14 @@ import android.widget.Toast;
 import com.zhipengyang.bunnyc2.R;
 import com.zhipengyang.bunnyc2.data.TestAction;
 import com.zhipengyang.bunnyc2.data.TestListener;
-import com.zhipengyang.bunnyc2.data_structure.CommonFunctions;
+import com.zhipengyang.bunnyc2.data_structure.GeneralFunctions;
 import com.zhipengyang.bunnyc2.fragments.actives.HomeFragment;
+import com.zhipengyang.bunnyc2.fragments.actives.SchoolFragment;
 import com.zhipengyang.bunnyc2.gameManagers.HeartBeat;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int internalVersion = 19; //App version for detecting updates
+    public static int internalVersion = 21; //App version for detecting updates
     private Fragment fragmentOpened = null;
     private static HeartBeat heartBeat = null;
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         heartBeat.setEventListener(testListener, new TestAction(), 1000);
 
         //Detect updates
-        CommonFunctions.detectUpdates(getApplicationContext(), this, internalVersion);
+        GeneralFunctions.detectUpdates(getApplicationContext(), this, internalVersion);
 
         FloatingActionButton fab;
         if ((fab = (FloatingActionButton) findViewById(R.id.fab)) == null) {
@@ -84,6 +85,14 @@ public class MainActivity extends AppCompatActivity
             return;
         }
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+        fragmentTransaction.add(R.id.main_container, homeFragment).commit();
+        setTitle(R.string.nav_home);
+        removeOpenedFragment();
+        fragmentOpened = homeFragment;
     }
 
     @Override
@@ -140,51 +149,64 @@ public class MainActivity extends AppCompatActivity
                             //0
                             case R.id.nav_city:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_city);
                                 Toast.makeText(getApplicationContext(), "City (Working)", Toast.LENGTH_LONG).show();
                                 break;
                             //1
                             case R.id.school:
                                 removeOpenedFragment();
-                                Toast.makeText(getApplicationContext(), "School (Coming Soon..)", Toast.LENGTH_LONG).show();
+                                SchoolFragment schoolFragment = new SchoolFragment();
+                                fragmentTransaction.add(R.id.main_container, schoolFragment).commit();
+                                setTitle(R.string.nav_school);
+                                removeOpenedFragment();
+                                fragmentOpened = schoolFragment;
                                 break;
                             //2
                             case R.id.hospital:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_hospital);
                                 Toast.makeText(getApplicationContext(), "Hospital (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //3
                             case R.id.park:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_park);
                                 Toast.makeText(getApplicationContext(), "Park (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //4
                             case R.id.restaurant:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_restaurant);
                                 Toast.makeText(getApplicationContext(), "Restaurant (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //5
                             case R.id.microsoft_research:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_microsoft_research);
                                 Toast.makeText(getApplicationContext(), "Microsoft Research (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //6
                             case R.id.google_corp:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_google);
                                 Toast.makeText(getApplicationContext(), "Google Corp (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //7
                             case R.id.rotten_apple:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_rotten_apple);
                                 Toast.makeText(getApplicationContext(), "Rotten apple Corp (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //8
                             case R.id.factory:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_factory);
                                 Toast.makeText(getApplicationContext(), "Factory (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //9
                             case R.id.abandoned_house:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_abandoned_house);
                                 Toast.makeText(getApplicationContext(), "Abandoned house (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //10
@@ -198,21 +220,25 @@ public class MainActivity extends AppCompatActivity
                             //11
                             case R.id.nav_gallery:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_gallery);
                                 Toast.makeText(getApplicationContext(), "Gallery (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //12
                             case R.id.nav_shop:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_shop);
                                 Toast.makeText(getApplicationContext(), "Shop (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //13
                             case R.id.nav_share:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_share);
                                 Toast.makeText(getApplicationContext(), "Share (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                             //14
                             case R.id.nav_send:
                                 removeOpenedFragment();
+                                setTitle(R.string.nav_send);
                                 Toast.makeText(getApplicationContext(), "Send (Coming Soon..)", Toast.LENGTH_LONG).show();
                                 break;
                         }
@@ -222,9 +248,7 @@ public class MainActivity extends AppCompatActivity
         }).start();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer == null)
-
-        {
+        if (drawer == null) {
             Toast.makeText(getApplicationContext(), "Error code: 0x0004", Toast.LENGTH_LONG).show();
             return true;
         }

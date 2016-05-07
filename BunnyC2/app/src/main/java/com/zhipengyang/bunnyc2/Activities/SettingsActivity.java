@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.zhipengyang.bunnyc2.R;
-import com.zhipengyang.bunnyc2.data_structure.CommonFunctions;
+import com.zhipengyang.bunnyc2.data_structure.GeneralFunctions;
 
 
 public class SettingsActivity extends Activity {
@@ -34,7 +34,7 @@ public class SettingsActivity extends Activity {
         checkUpdates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommonFunctions.detectUpdates(getApplicationContext(), activity, MainActivity.internalVersion);
+                GeneralFunctions.detectUpdates(getApplicationContext(), activity, MainActivity.internalVersion);
             }
         });
     }

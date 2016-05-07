@@ -18,8 +18,15 @@ import java.util.List;
 
 public class HomeCanvas extends View {
     private List<Bitmap> bitmaps = new ArrayList<>();
+
+    private List<Bitmap> character = new ArrayList<>();
+    private int characterFlame = 0;
+    private int flameDirection = -1;
+
     private Canvas canvas;
     private Paint paintBrush;
+
+    private Thread animationThread;
 
     public HomeCanvas(Context context) {
         super(context);
@@ -34,19 +41,21 @@ public class HomeCanvas extends View {
     private Bitmap home = BitmapFactory.decodeResource(getResources(), R.drawable.home);
 
     private void init() {
-        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2));
-        /*
-        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand1));
-        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand2));
-        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand3));
-        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand4));
-        */
-        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.home));
         paintBrush = new Paint();
-    }
 
-    protected void animateCharacter(final Canvas canvas) {
-        //TODO
+        character.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand1));
+        character.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand2));
+        character.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand3));
+        character.add(BitmapFactory.decodeResource(getResources(), R.drawable.c2_hand4));
+
+        bitmaps.add(BitmapFactory.decodeResource(getResources(), R.drawable.home));
+
+        animationThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 
     @Override
@@ -54,32 +63,28 @@ public class HomeCanvas extends View {
         super.onDraw(canvas);
         this.canvas = canvas;
 
-        paintBrush.setColor(Color.parseColor("lightgray"));
-        paintBrush.setStrokeWidth(10);
+        canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(0), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
 
-        canvas.drawColor(Color.LTGRAY);
-        canvas.drawBitmap(Images.resizeBitmap(bitmaps.get(1), canvas.getWidth(), canvas.getHeight()), 0, 0, null);
-        //canvas.drawBitmap(Images.resizeBitmap(home, canvas.getWidth(), canvas.getHeight()), 0, 0, null);
+        if (characterFlame >= character.size() - 1 || characterFlame <= 0) {
+            flameDirection *= -1;
+            characterFlame = characterFlame + flameDirection;
+        } else
+            characterFlame += flameDirection;
+        //The structure above can reverse the direction of animation.
+        canvas.drawBitmap(character.get(characterFlame), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
 
-        canvas.drawBitmap(bitmaps.get(0), canvas.getWidth() / 4, canvas.getHeight() / 4, null);
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException e) {
+            Thread.interrupted();
+        }
 
         /*
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (Bitmap bitmap : bitmaps) {
-                    canvas.drawBitmap(bitmap, canvas.getWidth() / 4, canvas.getHeight() / 4, null);
-                    try {
-                        Thread.sleep(250);
-                    } catch (InterruptedException e) {
-                        Thread.interrupted();
-                    }
-                }
-            }
-        }).start();
+        //Draw a lightgray rectangle
+        paintBrush.setColor(Color.parseColor("lightgray"));
+        paintBrush.setStrokeWidth(10);
+        canvas.drawRect(100, 100, 800, 800, paintBrush);
         */
-
-        //canvas.drawRect(100, 100, 800, 800, paintBrush);
     }
 
     public void drawWindow(int width, int height) {

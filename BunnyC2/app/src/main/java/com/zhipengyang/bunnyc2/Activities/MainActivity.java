@@ -28,7 +28,7 @@ import com.zhipengyang.bunnyc2.gameManagers.HeartBeat;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int internalVersion = 22; //App version for detecting updates
+    public static int internalVersion = 25; //App version for detecting updates
     private static HeartBeat heartBeat = null;
 
     /**

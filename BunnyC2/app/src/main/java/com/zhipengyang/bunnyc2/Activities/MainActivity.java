@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void replaceOpenedFragment(Fragment newFragment) {
-        if (newFragment.getClass().equals(fragmentOpened.getClass()) && fragmentOpened.getClass().equals(newFragment.getClass())) {
+        if (fragmentOpened != null && newFragment.getClass().equals(fragmentOpened.getClass()) && fragmentOpened.getClass().equals(newFragment.getClass())) {
             return;
         }
         removeOpenedFragment();

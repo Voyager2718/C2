@@ -28,16 +28,8 @@ import com.zhipengyang.bunnyc2.gameManagers.HeartBeat;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static int internalVersion = 21; //App version for detecting updates
-    private Fragment fragmentOpened = null;
+    public static int internalVersion = 22; //App version for detecting updates
     private static HeartBeat heartBeat = null;
-
-    private void removeOpenedFragment() {
-        if (fragmentOpened != null) {
-            getFragmentManager().beginTransaction().remove(fragmentOpened).commit();
-            fragmentOpened = null;
-        }
-    }
 
     /**
      * Alert if update available
@@ -131,6 +123,28 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    //Fragment control
+    private Fragment fragmentOpened = null;//Fragment opened in activity(Such as HomeFragment, SchoolFragment, etc..)
+
+    private void removeOpenedFragment() {
+        if (fragmentOpened != null) {
+            getFragmentManager().beginTransaction().remove(fragmentOpened).commit();
+            fragmentOpened = null;
+        }
+    }
+
+    private void replaceOpenedFragment(Fragment newFragment) {
+        if (newFragment.getClass().equals(fragmentOpened.getClass()) && fragmentOpened.getClass().equals(newFragment.getClass())) {
+            return;
+        }
+        removeOpenedFragment();
+        getFragmentManager().beginTransaction().add(R.id.main_container, newFragment).commit();
+        setTitle(R.string.nav_school);
+        fragmentOpened = newFragment;
+    }
+    //Fragment control ended
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(final MenuItem item) {
@@ -142,9 +156,6 @@ public class MainActivity extends AppCompatActivity
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        FragmentManager fragmentManager = getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
                         switch (item.getItemId()) {
                             //0
                             case R.id.nav_city:
@@ -154,12 +165,8 @@ public class MainActivity extends AppCompatActivity
                                 break;
                             //1
                             case R.id.school:
-                                removeOpenedFragment();
-                                SchoolFragment schoolFragment = new SchoolFragment();
-                                fragmentTransaction.add(R.id.main_container, schoolFragment).commit();
+                                replaceOpenedFragment(new SchoolFragment());
                                 setTitle(R.string.nav_school);
-                                removeOpenedFragment();
-                                fragmentOpened = schoolFragment;
                                 break;
                             //2
                             case R.id.hospital:
@@ -211,11 +218,8 @@ public class MainActivity extends AppCompatActivity
                                 break;
                             //10
                             case R.id.nav_home:
-                                HomeFragment homeFragment = new HomeFragment();
-                                fragmentTransaction.add(R.id.main_container, homeFragment).commit();
+                                replaceOpenedFragment(new HomeFragment());
                                 setTitle(R.string.nav_home);
-                                removeOpenedFragment();
-                                fragmentOpened = homeFragment;
                                 break;
                             //11
                             case R.id.nav_gallery:

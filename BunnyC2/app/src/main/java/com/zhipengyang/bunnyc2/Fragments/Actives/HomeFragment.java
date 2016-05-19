@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        //Find views
+        //Find viewsm
         properties = (Button) view.findViewById(R.id.properties);
         homeCanvas = (HomeCanvas) view.findViewById(R.id.home_canvas);
 

@@ -1,0 +1,67 @@
+<resources>
+    <!-- Common strings -->
+    <string name="email">zhipeng.yang.it@hotmail.com</string>
+    <string name="network_error">Disconnected, unable to check updates</string>
+    <string name="update">Update</string>
+    <string name="check_update">Check update</string>
+    <string name="check">Check</string>
+    <string name="up_to_date">The application is up to date: </string>
+    <string name="update_available">Update available\nVersion: </string>
+    <string name="go_update">Update?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="hello_bunny">Hello, Bunny!</string>
+
+    <!-- Specified strings -->
+    <string name="app_name">Bunny C2</string>
+    <string name="author">Zhipeng YANG</string>
+
+    <!--Dev strings-->
+    <string name="reserved_action">Reserved</string>
+
+    <!--Menus/Items/Buttons/Actions-->
+    <string name="action_settings">Settings</string>
+    <string name="settings">Settings</string>
+
+    <string name="navigation_drawer_open">Open Deck</string>
+    <string name="navigation_drawer_close">Close Deck</string>
+
+    <string name="properties">Properties</string>
+    <string name="equipments">Equipments</string>
+    <string name="actions">Actions</string>
+
+    <string name="account">Account</string>
+    <string name="login">Login</string>
+    <string name="log_out">Log out</string>
+    <string name="feedback">Feedback</string>
+
+    <!-- Drawers -->
+    <string name="nav_city">City</string>
+    <string name="nav_school">School</string>
+    <string name="nav_hospital">Hospital</string>
+    <string name="nav_park">Park</string>
+    <string name="nav_restaurant">Restaurant</string>
+    <string name="nav_factory">Factory</string>
+    <string name="nav_microsoft_research">Microsoft Research</string>
+    <string name="nav_google">Google Corp</string>
+    <string name="nav_rotten_apple">Rotten Apple Corp</string>
+    <string name="nav_abandoned_house">Abandoned house</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_gallery">Gallery</string>
+    <string name="nav_shop">Shop</string>
+
+    <string name="nav_communicate">Communicate</string>
+
+    <string name="nav_share">Share</string>
+    <string name="nav_send">Send</string>
+
+    <string name="options">Options</string>
+
+    <!-- Phases -->
+    <string name="contact_author">Contact author: zhipeng.yang.it@hotmail.com</string>
+
+    <!-- Skills -->
+    <string name="simple_skill_description">A skill</string>
+</resources>

@@ -5,15 +5,15 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" />
+            android:title="@string/settings" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/nav_communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/nav_share" />
         </menu>
     </item>
 
